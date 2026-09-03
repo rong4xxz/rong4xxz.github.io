@@ -1,0 +1,14 @@
+title: 学习笔记
+description: >-
+  这里的读书笔记记载了笔者在学习相关领域知识时的一些感悟和心得，
+  也算为将来的复习减少负担。
+baseurl: ""
+url: "https://rong4xxz.github.io"
+github_username: rong4xxz
+
+# 主题设置
+theme: minima
+
+# 插件
+plugins:
+  - jekyll-feed
