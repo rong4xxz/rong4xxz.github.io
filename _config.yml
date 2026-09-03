@@ -13,5 +13,9 @@ theme: minima
 plugins:
   - jekyll-feed
 
-# 关键配置：让文章按分类生成到对应目录
-permalink: /blog/:categories/:year/:month/:day/:title/
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
