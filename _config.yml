@@ -12,3 +12,6 @@ theme: minima
 # 插件
 plugins:
   - jekyll-feed
+
+# 关键配置：让文章按分类生成到对应目录
+permalink: /blog/:categories/:year/:month/:day/:title/
