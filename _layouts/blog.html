@@ -1,0 +1,15 @@
+---
+layout: default
+---
+
+<header class="hero">
+    <div class="hero-inner">
+        <span class="hero-kicker">Notes / Library</span>
+        <h1 class="hero-title">{{ page.title | default: "博客文章" }}</h1>
+        <p class="hero-meta">共 {{ site.posts | size }} 篇 · 把零散的思考整理成可以回看的路径</p>
+    </div>
+</header>
+
+<div class="container">
+    {{ content }}
+</div>

@@ -1,0 +1,12 @@
+<footer class="site-footer">
+    <div class="footer-inner">
+        <h3>{{ site.title | escape }}</h3>
+        <p class="footer-desc">{{ site.description }}</p>
+        <p class="footer-links">
+            <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>
+            <span class="dot">·</span>
+            <a href="{{ '/feed.xml' | relative_url }}">订阅</a>
+        </p>
+        <p class="footer-copy">© {{ site.time | date: "%Y" }} 尧辰 · 勇敢的人先享受世界</p>
+    </div>
+</footer>
