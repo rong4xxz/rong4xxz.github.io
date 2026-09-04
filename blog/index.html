@@ -29,7 +29,7 @@ permalink: /blog/
     <h1>博客文章</h1>
     <p class="blog-intro">把零散的思考整理成可以回看的路径。</p>
 
-    {% assign categories = site.post | group_by: "category" %}
+    {% assign categories = site.posts | group_by: "category" %}
     {% for category in categories %}
         {% assign cat_name = category.name | default: "未分类" | capitalize %}
         <div class="category">
