@@ -4,9 +4,19 @@ title: 博客文章
 permalink: /blog/
 ---
 
+{% assign categories = site.posts | group_by: "category" | sort: "name" %}
+
+<div class="filter-bar">
+    <button type="button" class="filter-pill active" data-filter="all">全部 <span class="pill-count">{{ site.posts | size }}</span></button>
+    {% for category in categories %}
+    <button type="button" class="filter-pill" data-filter="{{ category.name | downcase }}">{{ category.name }} <span class="pill-count">{{ category.items.size }}</span></button>
+    {% endfor %}
+    <span class="filter-note" id="filter-note">共 {{ site.posts | size }} 篇 · 按时间倒序</span>
+</div>
+
 <ul class="post-list">
     {% for post in site.posts %}
-    <li>
+    <li data-category="{{ post.category | downcase }}">
         <article class="post-card">
             <a class="post-card-head" href="{{ post.url }}">
                 <h2 class="post-card-title">{{ post.title | escape }}</h2>
@@ -25,3 +35,35 @@ permalink: /blog/
     </li>
     {% endfor %}
 </ul>
+
+<script>
+(function () {
+    var pills = document.querySelectorAll('.filter-pill');
+    var items = document.querySelectorAll('.post-list > li');
+    var note = document.getElementById('filter-note');
+
+    function apply(filter) {
+        var shown = 0;
+        var label = '全部';
+        items.forEach(function (li) {
+            var visible = filter === 'all' || li.dataset.category === filter;
+            li.style.display = visible ? '' : 'none';
+            if (visible) shown++;
+        });
+        pills.forEach(function (pill) {
+            var active = pill.dataset.filter === filter;
+            pill.classList.toggle('active', active);
+            if (active && filter !== 'all') label = pill.childNodes[0].textContent.trim();
+        });
+        if (note) {
+            note.textContent = filter === 'all'
+                ? '共 ' + items.length + ' 篇 · 按时间倒序'
+                : label + ' · ' + shown + ' 篇';
+        }
+    }
+
+    pills.forEach(function (pill) {
+        pill.addEventListener('click', function () { apply(pill.dataset.filter); });
+    });
+})();
+</script>

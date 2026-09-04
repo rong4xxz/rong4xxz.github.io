@@ -37,5 +37,13 @@ layout: default
         </nav>
     </article>
 
+    <section class="comments-card">
+        <h2 class="comments-title">评论</h2>
+        <p class="comments-note">评论通过 Giscus 托管在本仓库的 GitHub Discussions，使用 GitHub 账号即可参与讨论。</p>
+        <div class="comments-box">
+            {% include giscus.html %}
+        </div>
+    </section>
+
     <p class="back-blog"><a href="{{ '/blog/' | relative_url }}">← 返回文章列表</a></p>
 </div>

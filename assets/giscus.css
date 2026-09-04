@@ -1,0 +1,73 @@
+/* =========================================================
+   Giscus 评论自定义主题
+   与站点主题一致：暖白底 + 薄荷绿强调色
+   （通过覆盖 Primer 色彩变量实现，giscus 会把本文件注入其 iframe）
+   ========================================================= */
+
+main {
+    /* 背景：透明让外层暖白卡片透出来 */
+    --color-canvas-default: transparent;
+    --color-canvas-overlay: #fffdf8;
+    --color-canvas-inset: #f2f7f4;
+    --color-canvas-subtle: #edf3f0;
+
+    /* 文字 */
+    --color-fg-default: #17232d;
+    --color-fg-muted: #6d7c86;
+    --color-fg-subtle: #8fa0a8;
+    --color-fg-on-emphasis: #ffffff;
+
+    /* 边框 */
+    --color-border-default: #dce6e9;
+    --color-border-muted: #e7eef0;
+    --color-border-subtle: rgba(23, 35, 45, 0.08);
+
+    /* 中性填充 */
+    --color-neutral-muted: rgba(23, 35, 45, 0.10);
+    --color-neutral-subtle: rgba(23, 35, 45, 0.05);
+
+    /* 强调色（链接、焦点等）：薄荷绿 */
+    --color-accent-fg: #0f766e;
+    --color-accent-emphasis: #0f766e;
+    --color-accent-muted: rgba(15, 118, 110, 0.4);
+    --color-accent-subtle: #dceee8;
+
+    /* 主按钮（"评论"、"回复"、"登录"等）：主题绿 */
+    --color-btn-primary-bg: #0f766e;
+    --color-btn-primary-text: #ffffff;
+    --color-btn-primary-border: rgba(23, 35, 45, 0.15);
+    --color-btn-primary-hover-bg: #0d5c56;
+    --color-btn-primary-hover-border: rgba(23, 35, 45, 0.15);
+    --color-btn-primary-selected-bg: #0b4f44;
+    --color-btn-primary-disabled-bg: rgba(15, 118, 110, 0.5);
+
+    /* 次级按钮 */
+    --color-btn-bg: #fffdf8;
+    --color-btn-text: #17232d;
+    --color-btn-border: #dce6e9;
+    --color-btn-hover-bg: #f2f7f4;
+    --color-btn-hover-border: #b9d0c8;
+    --color-btn-active-bg: #eaf2ee;
+
+    /* Giscus 专用强调色变量（R,G,B 三元组格式） */
+    --primary-default: 15, 118, 110;
+    --primary-contrast: 255, 255, 255;
+    --primary-rgb: 15, 118, 110;
+
+    /* 代码高亮（评论区引用代码片段时） */
+    --color-prettylights-syntax-comment: #6d7c86;
+    --color-prettylights-syntax-constant: #0d5c56;
+    --color-prettylights-syntax-entity: #6639ba;
+    --color-prettylights-syntax-keyword: #bc4c00;
+    --color-prettylights-syntax-string: #0a3069;
+
+    /* 字体沿用站点字体栈，中文优先 */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+}
+
+/* 登录提示与加载态等细节 */
+main .gsc-loading-text,
+main .gsc-comment-box-textarea {
+    color: #2c3a44;
+}

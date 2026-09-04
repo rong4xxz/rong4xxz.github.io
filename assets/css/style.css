@@ -158,6 +158,68 @@ img { max-width: 100%; }
     padding: 2rem clamp(1.4rem, 4vw, 2.8rem);
 }
 
+/* ================= 分类筛选栏 ================= */
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 8px 8px 0 var(--shadow);
+    padding: 0.8rem 1rem;
+    margin-bottom: 2rem;
+}
+
+.filter-pill {
+    font: inherit;
+    font-size: 0.88rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: var(--paper);
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.35rem 0.95rem;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.filter-pill:hover {
+    background: var(--tint);
+    color: var(--ink);
+    border-color: var(--accent);
+}
+
+.filter-pill:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.filter-pill.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    font-weight: 600;
+}
+
+.pill-count {
+    font-size: 0.72rem;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.75;
+}
+
+.filter-note {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
 /* ================= 列表页 ================= */
 
 .post-list {
@@ -445,6 +507,36 @@ a.post-card-head:hover .post-card-title { color: var(--accent); }
 
 .back-blog a:hover { text-decoration: underline; }
 
+/* ================= 评论区（Giscus） ================= */
+
+.comments-card {
+    background: var(--paper);
+    border: 1px solid #d8e4df;
+    border-radius: 8px;
+    box-shadow: 12px 12px 0 var(--shadow);
+    padding: 1.6rem clamp(1.4rem, 4vw, 2.8rem);
+    margin-top: 2rem;
+}
+
+.comments-title {
+    font-family: var(--serif);
+    color: var(--ink);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.3rem;
+}
+
+.comments-note {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-bottom: 1.2rem;
+}
+
+.comments-box {
+    min-height: 120px;
+}
+
 /* ================= 页脚 ================= */
 
 .site-footer {
@@ -501,4 +593,6 @@ a.post-card-head:hover .post-card-title { color: var(--accent); }
     .post-nav { flex-direction: column; }
     .post-nav-item.next { text-align: left; }
     .nav-inner { justify-content: center; }
+    .filter-bar { box-shadow: 4px 4px 0 var(--shadow); }
+    .filter-note { width: 100%; margin-left: 0; }
 }
