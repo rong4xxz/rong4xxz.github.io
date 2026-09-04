@@ -5,45 +5,138 @@ permalink: /blog/
 ---
 
 <style>
-    :root { --ink: #17232d; --muted: #6d7c86; --line: #dce6e9; --accent: #0f766e; --paper: #f5f8f6; }
-    body { background: var(--paper); color: var(--ink); }
-    .blog-container { max-width: 900px; margin: 0 auto; padding: 4rem 1.25rem 5rem; }
-    .blog-kicker { color: var(--accent); font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
-    h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); line-height: 1; margin: .6rem 0 .75rem; letter-spacing: 0; }
-    .blog-intro { color: var(--muted); margin: 0 0 3rem; }
-    .category { margin-bottom: 2.25rem; }
-    .category h2 { align-items: center; display: flex; font-size: 1rem; gap: .8rem; margin: 0 0 .8rem; }
-    .category h2::after { background: var(--line); content: ""; height: 1px; flex: 1; }
-    .post-item { align-items: baseline; border-bottom: 1px solid var(--line); display: flex; gap: 1rem; justify-content: space-between; padding: .85rem .2rem; }
-    .post-item a { color: var(--ink); font-size: 1.05rem; text-decoration: none; transition: color .2s ease, padding .2s ease; }
-    .post-item a:hover { color: var(--accent); padding-left: .35rem; }
-    .post-date { color: var(--muted); font-size: .8rem; white-space: nowrap; }
-    .empty { border: 1px dashed var(--line); color: var(--muted); padding: 1.5rem; }
-    .back-home { color: var(--accent); display: inline-block; margin-top: 1.5rem; text-decoration: none; }
-    .back-home:hover { text-decoration: underline; }
-    @media (max-width: 560px) { .blog-container { padding-top: 2.5rem; } .post-item { align-items: flex-start; flex-direction: column; gap: .2rem; } }
+    /* ===== 博客列表页自定义样式 ===== */
+    .nl {
+        background: #fffdf8;
+        border: 1px solid #d8e4df;
+        border-radius: 8px;
+        box-shadow: 12px 12px 0 #cfe0d9;
+        padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 3rem);
+    }
+    .nl-kicker {
+        color: #0f766e;
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: .22em;
+        text-transform: uppercase;
+        margin-bottom: .9rem;
+    }
+    .nl-title {
+        font-size: clamp(2.2rem, 5vw, 3.4rem);
+        font-weight: 700;
+        letter-spacing: 0;
+        line-height: 1.15;
+        color: #17232d;
+        margin: 0 0 .6rem;
+    }
+    .nl-intro {
+        color: #6d7c86;
+        font-size: 1.02rem;
+        margin: 0 0 2.6rem;
+    }
+    .nl-cat { margin: 0 0 2.2rem; }
+    .nl-cat-head {
+        display: flex;
+        align-items: center;
+        gap: .9rem;
+        margin-bottom: .4rem;
+    }
+    .nl-cat-head h2 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        letter-spacing: .02em;
+        color: #17232d;
+        margin: 0;
+    }
+    .nl-count {
+        background: #dceee8;
+        color: #155e59;
+        border-radius: 999px;
+        padding: .12rem .7rem;
+        font-size: .75rem;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+    .nl-cat-head::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #dce6e9;
+    }
+    .nl ul { list-style: none; margin: 0; padding: 0; }
+    .nl-item { border-bottom: 1px solid #e7eef0; }
+    .nl-item:last-child { border-bottom: none; }
+    .nl-item a {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        padding: .8rem .4rem;
+        border-radius: 6px;
+        text-decoration: none;
+        color: #17232d;
+        font-size: 1.02rem;
+        transition: background .18s ease, color .18s ease, padding-left .18s ease;
+    }
+    .nl-item a:hover {
+        background: #f2f7f4;
+        color: #0f766e;
+        padding-left: .7rem;
+    }
+    .nl-date {
+        color: #94a3ab;
+        font-size: .8rem;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+    }
+    .nl-empty {
+        border: 1px dashed #dce6e9;
+        border-radius: 6px;
+        color: #6d7c86;
+        padding: 1.5rem;
+        text-align: center;
+    }
+    .nl-back {
+        display: inline-block;
+        margin-top: 2.2rem;
+        color: #0f766e;
+        font-size: .95rem;
+        text-decoration: none;
+    }
+    .nl-back:hover { text-decoration: underline; }
+    @media (max-width: 560px) {
+        .nl { box-shadow: 6px 6px 0 #cfe0d9; }
+        .nl-item a { flex-direction: column; align-items: flex-start; gap: .15rem; }
+    }
 </style>
 
-<div class="blog-container">
-    <div class="blog-kicker">Notes / Library</div>
-    <h1>博客文章</h1>
-    <p class="blog-intro">把零散的思考整理成可以回看的路径。</p>
+<div class="nl">
+    <div class="nl-kicker">Notes / Library</div>
+    <h1 class="nl-title">博客文章</h1>
+    <p class="nl-intro">把零散的思考整理成可以回看的路径。</p>
 
-    {% assign categories = site.posts | group_by: "category" %}
+    {% assign categories = site.posts | group_by: "category" | sort: "name" %}
     {% for category in categories %}
-        {% assign cat_name = category.name | default: "未分类" | capitalize %}
-        <div class="category">
-            <h2>{{ cat_name }}</h2>
-            {% for post in category.items %}
-                <div class="post-item">
-                    <a href="{{ post.url }}">{{ post.title }}</a>
-                    <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-                </div>
-            {% endfor %}
-        </div>
+        {% assign cat_name = category.name | default: "未分类" %}
+        <section class="nl-cat">
+            <div class="nl-cat-head">
+                <h2>{{ cat_name }}</h2>
+                <span class="nl-count">{{ category.items.size }} 篇</span>
+            </div>
+            <ul>
+                {% for post in category.items %}
+                <li class="nl-item">
+                    <a href="{{ post.url }}">
+                        <span>{{ post.title }}</span>
+                        <span class="nl-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
     {% endfor %}
 
-    {% if categories.size == 0 %}<p class="empty">还没有可展示的文章。</p>{% endif %}
+    {% if categories.size == 0 %}<p class="nl-empty">还没有可展示的文章。</p>{% endif %}
 
-    <a href="{{ site.baseurl }}/" class="back-home">← 返回首页</a>
+    <a href="{{ site.baseurl }}/" class="nl-back">← 返回首页</a>
 </div>

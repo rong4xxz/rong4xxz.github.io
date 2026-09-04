@@ -8,6 +8,8 @@ github_username: rong4xxz
 
 # 主题设置
 theme: minima
+minima:
+  date_format: "%Y-%m-%d"
 
 # 插件
 plugins:

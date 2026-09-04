@@ -1,0 +1,246 @@
+---
+# 覆盖 minima 主题的主样式文件：先导入主题默认样式，再追加自定义覆盖
+---
+
+@charset "utf-8";
+@import "minima";
+
+/* =========================================================
+   自定义覆盖（与首页视觉语言保持一致）
+   ========================================================= */
+
+/* ---- 色板与字体 ---- */
+$paper : #fffdf8;
+$bg    : #edf3f0;
+$ink   : #17232d;
+$text  : #2c3a44;
+$muted : #6d7c86;
+$line  : #dce6e9;
+$accent: #0f766e;
+$accent-deep: #0d5c56;
+$shadow: #cfe0d9;
+$tint  : #f2f7f4;
+
+$cn-fonts: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC";
+$mono    : ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+
+body {
+    background: $bg;
+    color: $text;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", $cn-fonts, sans-serif;
+}
+
+::selection { background: #cfe0d9; }
+
+/* ---- 顶部导航 ---- */
+.site-header {
+    background: rgba(255, 253, 248, 0.92);
+    border-top: 4px solid $accent;
+    border-bottom: 1px solid $line;
+}
+
+.site-title,
+.site-nav .page-link {
+    color: $ink;
+}
+
+.site-nav .page-link:hover { color: $accent; }
+
+/* ---- 内容区 ---- */
+.page-content {
+    background: transparent;
+    padding: 48px 0 64px;
+}
+
+.post,
+.page {
+    background: $paper;
+    border: 1px solid #d8e4df;
+    border-radius: 8px;
+    box-shadow: 12px 12px 0 $shadow;
+    padding: clamp(1.75rem, 4vw, 3rem);
+}
+
+/* ---- 文章头部 ---- */
+.post-header {
+    margin-bottom: 2.2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid $line;
+}
+
+.post-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.3;
+    color: $ink;
+    margin-bottom: 0.4rem;
+}
+
+.post-meta {
+    color: $muted;
+    font-size: 0.88rem;
+    letter-spacing: 0.02em;
+}
+
+/* ---- 文章正文 ---- */
+.post-content {
+    font-size: 1.02rem;
+    line-height: 1.85;
+    color: $text;
+    margin-bottom: 0;
+
+    h1, h2, h3, h4, h5, h6 {
+        color: $ink;
+        font-weight: 700;
+        letter-spacing: 0;
+        line-height: 1.4;
+    }
+
+    h1 { font-size: 1.55rem; margin: 2.2rem 0 0.8rem; }
+    h2 {
+        font-size: 1.32rem;
+        margin: 2.4rem 0 0.8rem;
+        padding-bottom: 0.35rem;
+        border-bottom: 1px solid $line;
+    }
+    h3 { font-size: 1.15rem; margin: 2rem 0 0.6rem; }
+    h4 { font-size: 1.02rem; margin: 1.6rem 0 0.5rem; }
+    h1:first-child, h2:first-child, h3:first-child { margin-top: 0.5rem; }
+
+    p { margin: 0 0 1.1rem; }
+
+    a {
+        color: $accent;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+        transition: color 0.15s ease, border-color 0.15s ease;
+
+        &:hover {
+            color: $ink;
+            border-bottom-color: $ink;
+        }
+    }
+
+    strong { color: $ink; }
+
+    ul, ol {
+        margin: 0 0 1.1rem;
+        padding-left: 1.5em;
+
+        li { margin: 0.25rem 0; }
+        li > ul, li > ol { margin-bottom: 0; }
+    }
+
+    blockquote {
+        margin: 1.4rem 0;
+        padding: 0.75rem 1.2rem;
+        border-left: 3px solid $accent;
+        background: $tint;
+        border-radius: 0 6px 6px 0;
+        color: #40545d;
+
+        > :last-child { margin-bottom: 0; }
+        p { margin-bottom: 0.4rem; }
+    }
+
+    img {
+        max-width: 100%;
+        border: 1px solid $line;
+        border-radius: 6px;
+        box-shadow: 8px 8px 0 #e3ece7;
+    }
+
+    hr {
+        border: 0;
+        border-top: 1px dashed $line;
+        margin: 2.5rem 0;
+    }
+
+    /* 表格 */
+    table {
+        width: 100%;
+        margin: 1.4rem 0;
+        border: 1px solid $line;
+        border-collapse: collapse;
+        font-size: 0.94rem;
+    }
+    th, td {
+        border: 1px solid $line;
+        padding: 0.55rem 0.8rem;
+        text-align: left;
+    }
+    th {
+        background: $tint;
+        color: $ink;
+        font-weight: 600;
+    }
+    tbody tr:nth-child(even) { background: #f8fbf9; }
+
+    /* 行内代码 */
+    code {
+        font-family: $mono;
+        font-size: 0.85em;
+        background: #edf3f1;
+        color: $accent-deep;
+        border: 1px solid #dde9e4;
+        border-radius: 4px;
+        padding: 0.12em 0.35em;
+    }
+
+    /* 代码块内的 code 还原为朴素样式 */
+    pre code,
+    .highlight code {
+        background: transparent;
+        border: 0;
+        padding: 0;
+        color: inherit;
+        font-size: 0.86rem;
+        line-height: 1.65;
+    }
+
+    /* 脚注等次要区域 */
+    .footnotes {
+        margin-top: 2.5rem;
+        padding-top: 1.2rem;
+        border-top: 1px dashed $line;
+        font-size: 0.9rem;
+        color: $muted;
+    }
+}
+
+/* ---- 代码块容器（覆盖 minima 默认的淡紫色底） ---- */
+.highlight,
+.highlighter-rouge .highlight,
+pre {
+    background: #f6f8fa;
+    border: 1px solid #e2e8e6;
+    border-radius: 6px;
+    padding: 0.9rem 1.1rem;
+    margin: 1.4rem 0;
+    overflow-x: auto;
+
+    pre {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        border: 0;
+    }
+}
+
+/* ---- 页脚 ---- */
+.site-footer {
+    background: transparent;
+    border-top: 1px solid $line;
+    color: $muted;
+}
+
+/* ---- 移动端 ---- */
+@media screen and (max-width: 600px) {
+    .post, .page {
+        box-shadow: 6px 6px 0 $shadow;
+        padding: 1.5rem 1.25rem;
+    }
+    .post-title { font-size: 1.7rem; }
+    .page-content { padding: 24px 0 40px; }
+}
